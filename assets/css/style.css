@@ -1,0 +1,24 @@
+body{margin:0;font-family:Poppins,system-ui;background:#0d1117;color:#e6eef6;line-height:1.6}
+.container{max-width:1100px;margin:auto;padding:0 20px}
+.navbar{background:#161b22;position:sticky;top:0;z-index:10}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+.menu{display:flex;gap:18px;list-style:none}
+.menu a{color:#e6eef6;text-decoration:none;font-weight:500}
+.menu a:hover{color:#58a6ff}
+.burger{display:none;background:none;border:0;color:#e6eef6;font-size:24px}
+.hero{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:center;padding:50px 0}
+.avatar{width:100%;border-radius:12px}
+.hero h1{font-size:36px;margin:0}
+.tagline{color:#58a6ff;font-weight:600}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;border:none;text-decoration:none}
+.btn.primary{background:#58a6ff;color:#fff}
+.btn.secondary{border:1px solid #58a6ff;color:#58a6ff}
+.btn.small{padding:6px 12px;font-size:14px}
+.card{background:#161b22;border-radius:10px;padding:20px;margin-top:20px}
+.skill span{display:block;margin-bottom:6px}
+.progress{height:8px;background:#2d333b;border-radius:6px;overflow:hidden}
+.progress div{height:100%;background:#58a6ff}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.achievements-list li{margin-bottom:6px}
+footer{text-align:center;color:#8b949e;margin:30px 0}
+@media(max-width:768px){.menu{display:none;flex-direction:column}.burger{display:block}.hero{grid-template-columns:1fr;text-align:center}}
