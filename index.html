@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Om Patel — Portfolio</title>
+  <meta name="description" content="Portfolio — Om Patel | CSE BTech" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <nav class="container">
+      <div class="brand">Om Patel</div>
+      <ul class="menu" id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="menu">☰</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <img src="images/profile.png" alt="Om Patel profile" class="avatar" />
+      </div>
+      <div class="hero-right">
+        <h1>Om Patel</h1>
+        <h3 class="tagline">Innovative CSE Student & Aspiring Software Engineer</h3>
+        <p class="bio">I am pursuing B.Tech in Computer Science and Engineering. Passionate about developing intelligent systems, building user-friendly applications, and exploring Artificial Intelligence, Web Development, and Open Source technologies.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="resume.pdf" download>Download Résumé</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>I’m Om Patel, a passionate CSE undergraduate with a strong interest in creating impactful digital solutions. I enjoy learning about backend systems, software design, and machine learning applications. My goal is to become a full-stack developer contributing to projects that enhance real-world efficiency.</p>
+      <div class="info-grid">
+        <div><strong>Location:</strong> Gujarat, India</div>
+        <div><strong>Education:</strong> B.Tech in Computer Science</div>
+        <div><strong>Languages:</strong> English, Hindi, Gujarati</div>
+        <div><strong>Interest Areas:</strong> AI, Web Dev, Cloud Computing</div>
+      </div>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><span>HTML/CSS</span><div class="progress"><div style="width:90%"></div></div></div>
+        <div class="skill"><span>JavaScript</span><div class="progress"><div style="width:80%"></div></div></div>
+        <div class="skill"><span>React</span><div class="progress"><div style="width:75%"></div></div></div>
+        <div class="skill"><span>Python</span><div class="progress"><div style="width:70%"></div></div></div>
+        <div class="skill"><span>Machine Learning</span><div class="progress"><div style="width:60%"></div></div></div>
+        <div class="skill"><span>Git/GitHub</span><div class="progress"><div style="width:85%"></div></div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <h3>Smart Attendance System</h3>
+          <p>Developed an AI-based attendance system using OpenCV and facial recognition. Enhanced classroom automation by reducing manual attendance work.</p>
+          <a href="#" class="btn small">GitHub</a>
+        </div>
+        <div class="project">
+          <h3>Personal Expense Tracker</h3>
+          <p>Web-based application for tracking daily expenses with real-time charts and analytics using Chart.js and Flask backend.</p>
+          <a href="#" class="btn small">GitHub</a>
+        </div>
+        <div class="project">
+          <h3>Portfolio Website</h3>
+          <p>A responsive portfolio site built with modern HTML, CSS, and JavaScript to showcase personal work and achievements.</p>
+          <a href="#" class="btn small">Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="card">
+      <h2>Achievements & Certifications</h2>
+      <ul class="achievements-list">
+        <li>Completed NPTEL Certification in “Applied Linear Algebra in AI and ML”.</li>
+        <li>Ranked Top 10 in college-level Hackathon 2025.</li>
+        <li>Google Cloud Arcade Challenge Participant.</li>
+      </ul>
+    </section>
+
+    <!-- Contact / Social Icons Section -->
+    <section id="contact" class="card">
+      <h2>Contact Me</h2>
+
+      <div class="social-icons">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/om-patel-935086328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn">
+          <img src="assets/linkedin.png" alt="LinkedIn" class="icon-img" />
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/OmPtl0007" target="_blank" aria-label="GitHub">
+          <img src="assets/github.png" alt="GitHub" class="icon-img" />
+        </a>
+
+        <!-- Gmail -->
+        <a href="mailto:om.patel@example.com" aria-label="Gmail">
+          <img src="assets/gmail.jpg" alt="Gmail" class="icon-img" />
+        </a>
+      </div>
+    </section>
+
+
+    <footer>
+      <p>© <span id="year"></span> Om Patel | Designed with ❤️</p>
+    </footer>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
