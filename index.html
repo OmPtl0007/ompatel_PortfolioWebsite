@@ -5,7 +5,555 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Om Patel — Portfolio</title>
   <meta name="description" content="Portfolio — Om Patel | CSE BTech" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --bg: #0f172a;
+      --bg-light: #1e293b;
+      --card-bg: #1e293b;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --accent: #22d3ee;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg) 0%, #1a1f35 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar:hover {
+      background: rgba(30, 41, 59, 0.95);
+    }
+
+    .navbar nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover {
+      transform: scale(1.1);
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .menu a {
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 4rem 0;
+      min-height: 80vh;
+    }
+
+    .hero-left {
+      flex: 1;
+    }
+
+    .avatar {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary);
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+      transition: all 0.5s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .avatar:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 50px rgba(99, 102, 241, 0.8);
+    }
+
+    .hero-right {
+      flex: 1;
+    }
+
+    .hero-right h1 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      animation: slideInRight 0.8s ease;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .tagline {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      animation: slideInRight 0.8s ease 0.2s both;
+    }
+
+    .bio {
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      animation: slideInRight 0.8s ease 0.4s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: slideInRight 0.8s ease 0.6s both;
+    }
+
+    /* Button Styles */
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn.secondary:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .btn.small {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Card Styles */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .card h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s ease;
+    }
+
+    .card:hover h2::after {
+      width: 100%;
+    }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .info-grid div {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border-left: 3px solid var(--primary);
+    }
+
+    .info-grid div:hover {
+      transform: translateX(10px);
+      background: rgba(99, 102, 241, 0.1);
+      border-left-color: var(--accent);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .skill {
+      transition: all 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.02);
+    }
+
+    .skill span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .progress {
+      background: var(--bg);
+      height: 12px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress div {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      transition: all 1s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress div::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .project:hover::before {
+      transform: translateX(0);
+    }
+
+    .project:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .project h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .project:hover h3 {
+      color: var(--primary);
+    }
+
+    /* Achievements List */
+    .achievements-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .achievements-list li {
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: var(--bg);
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .achievements-list li::before {
+      content: '✨';
+      position: absolute;
+      left: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .achievements-list li:hover {
+      transform: translateX(10px);
+      background: rgba(99, 102, 241, 0.1);
+      border-left-color: var(--accent);
+    }
+
+    .achievements-list li:hover::before {
+      transform: rotate(360deg) scale(1.2);
+    }
+
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .icon-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icons a:hover .icon-img {
+      transform: translateY(-10px) rotate(360deg) scale(1.2);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .social-icons a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .social-icons a:hover::after {
+      width: 80%;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-dim);
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-right h1 {
+        font-size: 2rem;
+      }
+
+      .avatar {
+        width: 200px;
+        height: 200px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Scroll animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+  </style>
 </head>
 <body>
   <header class="navbar">
@@ -26,7 +574,7 @@
   <main class="container">
     <section id="home" class="hero">
       <div class="hero-left">
-        <img src=""https://github.com/OmPtl0007/wd.git"" alt="Om Patel profile" class="avatar" />
+        <img src="https://github.com/OmPtl0007/wd.git" alt="Om Patel profile" class="avatar" />
       </div>
       <div class="hero-right">
         <h1>Om Patel</h1>
@@ -41,7 +589,7 @@
 
     <section id="about" class="card">
       <h2>About Me</h2>
-      <p>I’m Om Patel, a passionate CSE undergraduate with a strong interest in creating impactful digital solutions. I enjoy learning about backend systems, software design, and machine learning applications. My goal is to become a full-stack developer contributing to projects that enhance real-world efficiency.</p>
+      <p>I'm Om Patel, a passionate CSE undergraduate with a strong interest in creating impactful digital solutions. I enjoy learning about backend systems, software design, and machine learning applications. My goal is to become a full-stack developer contributing to projects that enhance real-world efficiency.</p>
       <div class="info-grid">
         <div><strong>Location:</strong> Gujarat, India</div>
         <div><strong>Education:</strong> B.Tech in Computer Science</div>
@@ -66,14 +614,14 @@
       <h2>Projects</h2>
       <div class="projects-grid">
         <div class="project">
-          <h3>practical management and view </h3>
-          <p>Developed an site to manage my practicals code. so, i will able to revice whenever i needs .</p>
+          <h3>practical management and view</h3>
+          <p>Developed an site to manage my practicals code. so, i will able to revice whenever i needs.</p>
           <a href="#https://github.com/OmPtl0007/wd" class="btn small">GitHub</a>
         </div>
         <div class="project">
           <h3>soil health and crop rotation</h3>
-          <p>Web-based application for tracking soil health with real-time details and help to analytics which crops to grow after test .</p>
-          <p>presonal project </p>
+          <p>Web-based application for tracking soil health with real-time details and help to analytics which crops to grow after test.</p>
+          <p>presonal project</p>
         </div>
         <div class="project">
           <h3>Portfolio Website</h3>
@@ -86,40 +634,42 @@
     <section id="achievements" class="card">
       <h2>Achievements & Certifications</h2>
       <ul class="achievements-list">
-        <li>Completed NPTEL Certification in “Applied Linear Algebra in AI and ML”.</li>
+        <li>Completed NPTEL Certification in "Applied Linear Algebra in AI and ML".</li>
         <li>Ranked Top 10 in college-level Hackathon 2025.</li>
         <li>Google Cloud Arcade Challenge Participant.</li>
       </ul>
     </section>
 
-    <!-- Contact / Social Icons Section -->
     <section id="contact" class="card">
       <h2>Contact Me</h2>
 
       <div class="social-icons">
-        <!-- LinkedIn -->
         <a href="https://www.linkedin.com/in/om-patel-935086328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn">
           <img src="assets/linkedin.png" alt="LinkedIn" class="icon-img" />
         </a>
 
-        <!-- GitHub -->
         <a href="https://github.com/OmPtl0007" target="_blank" aria-label="GitHub">
           <img src="assets/github.png" alt="GitHub" class="icon-img" />
         </a>
 
-        <!-- Gmail -->
         <a href="mailto:om.patel@example.com" aria-label="Gmail">
           <img src="assets/gmail.jpg" alt="Gmail" class="icon-img" />
         </a>
       </div>
     </section>
 
-
     <footer>
       <p>© <span id="year"></span> Om Patel | Designed with ❤️</p>
     </footer>
   </main>
 
-  <script src="assets/js/script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    document.getElementById('burger').addEventListener('click', function() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
 </body>
 </html>
